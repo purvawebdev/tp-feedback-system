@@ -2,8 +2,20 @@ import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { colleges } from "../data/colleges";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 export default function CollegeLogin() {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+  // later this will be Firebase auth
+  // for now, simulate successful login
+  navigate("/college-admin/dashboard");
+};
+
+
+
   // simulate route param: /login/:collegeId
   const { collegeId } = useParams();
 
@@ -15,7 +27,7 @@ export default function CollegeLogin() {
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2">
       {/* LEFT SIDE — College Branding */}
       <div className="hidden md:flex flex-col justify-center items-center bg-[#083164] text-white px-12 relative">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] bg-[size:24px_24px]" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] bg-size-[24px_24px]" />
 
         <div className="relative z-10 max-w-md text-center">
           {/* Logo */}
@@ -97,7 +109,7 @@ export default function CollegeLogin() {
             </div>
 
             {/* Sign In */}
-            <button className="w-full rounded-lg bg-[#083164] py-3 text-sm font-medium text-white hover:bg-[#06284f] transition">
+            <button onClick={handleLogin} className="w-full rounded-lg bg-[#083164] py-3 text-sm font-medium text-white hover:bg-[#06284f] transition">
               Sign In
             </button>
           </div>
